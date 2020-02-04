@@ -82,10 +82,10 @@ native 		IsValidVehicle(vehicleid);
 #define 	MAX_BILLBORDS 							50	//кол-во билбордов
 #define 	MAX_OGRAD 								500
 /*============================================================================*/
-#define 	FullServName 		"Aurora RolePlay"
-#define 	NameServer 			"Aurora-Rp"
-#define 	NameSite 			"Aurora-Rp.Com"
-#define 	HostName 			"Aurora RolePlay"
+#define 	FullServName 		"Vegas RolePlay"
+#define 	NameServer 			"Vegas-Rp"
+#define 	NameSite 			"Vegas-Rp.Com"
+#define 	HostName 			"Vegas RolePlay"
 /*============================================================================*/
 #define 	TABLE_ACCOUNTS  	"accounts"
 #define 	TABLE_ADMIN 		"admin"
@@ -9646,10 +9646,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 			if(TI[playerid][tLogin]) return true;
 			else if(!strlen(inputtext) || !CheckPassword(inputtext)) {
 				if(!CheckPassword(inputtext)) ErrorMessage(playerid,"Смените раскладку клавиатуры");
-			   	static const f_str[] = ""W"С возвращением на сервер "P"Aurora Role Play!"W"\n\n\
+			   	static const f_str[] = ""W"С возвращением на сервер "P"Vegas Role Play!"W"\n\n\
 					Аккаунт "P"%s"W" успешно найден.\n\
 					Для авторизации, пожалуйста, введите пароль от аккаунта.\n\n\
-					Восстановить пароль можно на сайте: "P"www.aurora-rp.com";
+					Восстановить пароль можно на сайте: "P"www.Vegas-rp.com";
 				new string[sizeof(f_str) + 1 + (-2 + MAX_PLAYER_NAME)];
 
 				format(string, sizeof(string), f_str, player_name[playerid]);
@@ -9666,10 +9666,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 					format(string_1,sizeof(string_1), f_str_1,3-GetPVarInt(playerid, "wrongPass"));
 					ErrorMessage(playerid,string_1);
 
-	     			static const f_str[] = ""W"С возвращением на сервер "P"Aurora Role Play!"W"\n\n\
+	     			static const f_str[] = ""W"С возвращением на сервер "P"Vegas Role Play!"W"\n\n\
 						Аккаунт "P"%s"W" успешно найден.\n\
 						Для авторизации, пожалуйста, введите пароль от аккаунта.\n\n\
-						Восстановить пароль можно на сайте: "P"www.aurora-rp.com";
+						Восстановить пароль можно на сайте: "P"www.Vegas-rp.com";
 					new string[sizeof(f_str) + 1 + (-2 + MAX_PLAYER_NAME)];
 
 					format(string, sizeof(string), f_str, player_name[playerid]);
@@ -9705,7 +9705,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 		case D_REG: {
 			if(!response) return Kick(playerid);
 			if(!strlen(inputtext) || strlen(inputtext) < 6 || strlen(inputtext) > 20 || !CheckPassword(inputtext)) {
-    			static const f_str[] = ""G"Добро пожаловать на сервер: "ORANGE"Aurora Role Play"G"\n\
+    			static const f_str[] = ""G"Добро пожаловать на сервер: "ORANGE"Vegas Role Play"G"\n\
 					"ORANGE"Регистрация нового персонажа"G"\n\n\
 					Логин: "P"%s"G"\n\
 					Введите пароль:\n\n\
@@ -9849,14 +9849,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 							if(control == 1) D(playerid, DIALOG_NONE, DSM, ""P"E-Mail", "\n\n"W"E-Mail адрес на Вашем аккаунте уже подтвержден. Изменить его нельзя\n\n","Закрыть","");
 							else D(playerid,D_MAIL_CONTROL,DSI, ""P"E-Mail",""W"Укажите Вашу "GREEN"почту"W"\n\nУкажите ваш реальный "P"Email"W". C помощью него вы сможете восстановить пароль","Далее","Закрыть");
 						}
-						else D(playerid, DIALOG_NONE, DSM, ""P"E-Mail", "\n\n"W"Подтвердите Ваш E-Mail адрес на сайте "YELLOW"Aurora-Rp.Com\n\n","Закрыть","");
+						else D(playerid, DIALOG_NONE, DSM, ""P"E-Mail", "\n\n"W"Подтвердите Ваш E-Mail адрес на сайте "YELLOW"Vegas-Rp.Com\n\n","Закрыть","");
 						cache_delete(result);
 					}
 					else D(playerid,D_MAIL_CONTROL,DSI, ""P"E-Mail",""W"Укажите Вашу "GREEN"почту"W"\n\nУкажите ваш реальный "P"Email"W". C помощью него вы сможете восстановить пароль","Далее","Закрыть");
 				}
 				case 3: {
 					if(GetString(PI[playerid][pGoogle],"NULL")) {
-						D(playerid, DIALOG_NONE, DSM, ""P"Google Authenticator", "\n\n"W"Подключите защиту в личном кабинете на нашем сайте - "ORANGE"Aurora-Rp.Com\n\n","Закрыть","");
+						D(playerid, DIALOG_NONE, DSM, ""P"Google Authenticator", "\n\n"W"Подключите защиту в личном кабинете на нашем сайте - "ORANGE"Vegas-Rp.Com\n\n","Закрыть","");
 						return 1;
 					}
 					D(playerid, D_GOOGLE, DSL, ""P"Google Authenticator", ""P"1."W" Запрашивать пароль при каждой смене IP адреса\n"P"2."W" Отключить Google Authenticator","Выбрать","Отмена");
@@ -9901,7 +9901,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 				format(query,sizeof(query),"UPDATE accounts SET pEmail = '%s' WHERE `pID` = '%d' LIMIT 1",PI[playerid][pEmail],PI[playerid][pID]);
 				mysql_tquery(connects,query);
 				new string[128];
-				format(string,sizeof(string),"Ваш E-Mail адрес: "W"%s. "YELLOW"Подтвердите его на сайте Aurora-Rp.Com в личном кабинете",PI[playerid][pEmail]);
+				format(string,sizeof(string),"Ваш E-Mail адрес: "W"%s. "YELLOW"Подтвердите его на сайте Vegas-Rp.Com в личном кабинете",PI[playerid][pEmail]);
 				SendClientMessage(playerid,COLOR_YELLOW,string);
 			}
 		}
@@ -10949,25 +10949,25 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 					case 0: {
 						format(string, sizeof(string), "[DJ] Наслаждайтесь прямым эфиром от rDJ %s прямо сейчас! ", DJname[playerid]);
 						SendClientMessageToAll(0xFFCD00AA,string);
-						format(string, sizeof(string), "[DJ] Для прослушивания радио введите /play и подключитесь к AURORA RADIO");
+						format(string, sizeof(string), "[DJ] Для прослушивания радио введите /play и подключитесь к Vegas RADIO");
 						SendClientMessageToAll(0xFFCD00AA,string);
 
 					} 
 					case 1:{
 				
-						format(string, sizeof(string), "[DJ] Проводите время в удовольствие с нашей музыкой! Подключайтесь к нам /play > 1.AURORA RADIO");
+						format(string, sizeof(string), "[DJ] Проводите время в удовольствие с нашей музыкой! Подключайтесь к нам /play > 1.Vegas RADIO");
 						SendClientMessageToAll(0xFFCD00AA,string);
 					}
 					case 2:
 					{
 				
-						format(string, sizeof(string), "[DJ] Больше новостей и музыкальных постов, которых нигде нет! ВК: vk.com/aurora_fm");
+						format(string, sizeof(string), "[DJ] Больше новостей и музыкальных постов, которых нигде нет! ВК: vk.com/Vegas_fm");
 						SendClientMessageToAll(0xFFCD00AA,string);
 					}
 					case 3:
 					{
 				
-						format(string, sizeof(string), "[DJ] На форуме есть информация о стажировке на радио Aurora FM. Успей подать свою заявку!");
+						format(string, sizeof(string), "[DJ] На форуме есть информация о стажировке на радио Vegas FM. Успей подать свою заявку!");
 						SendClientMessageToAll(0xFFCD00AA,string);
 					}
 					case 4:
@@ -11229,9 +11229,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 				case 0: {
 					BonusInfo[act_select] = (BonusInfo[act_select] == 0) ? 1 : (BonusInfo[act_select] == 1) ? 2 : 0;
 					UpdateBonuses("act_select",BonusInfo[act_select]);
-					if(!BonusInfo[act_select]) SendRconCommand("hostname Aurora RolePlay");
-					else if(BonusInfo[act_select] == 1) SendRconCommand("hostname Aurora RolePlay | Действует акция для новичков");
-					else SendRconCommand("hostname Aurora RolePlay | Действует акция");
+					if(!BonusInfo[act_select]) SendRconCommand("hostname Vegas RolePlay");
+					else if(BonusInfo[act_select] == 1) SendRconCommand("hostname Vegas RolePlay | Действует акция для новичков");
+					else SendRconCommand("hostname Vegas RolePlay | Действует акция");
 				}
 				case 1: {
 					BonusInfo[act_level] = (BonusInfo[act_level] == 3) ? 5 : (BonusInfo[act_level] == 5) ? 7 : 3;
@@ -26735,7 +26735,7 @@ public OnPlayerEnterDynamicArea(playerid, areaid) {
 			case 10,11: {
 				static const f_str[] =
 					""GREEN"1.О проекте:"W"\n\
-					Aurora Role Play - это место где тебя всегда рады видеть. \n\
+					Vegas Role Play - это место где тебя всегда рады видеть. \n\
 					Только у нас Вы можете окунутся в захватывающий мир легендарной игры GTA San Andreas в жанре Role Play. \n\
 					Окунувшись в игровой процесс на нашем сервере, Вы сможете попробовать себя в разных игровых ролях, \n\
 					устроиться в полицию, участвовать в выборах, стать мэром или вообще президентом и руководить штатом, \n\
@@ -26743,7 +26743,7 @@ public OnPlayerEnterDynamicArea(playerid, areaid) {
 					или стать крутым мафиози, создать империю оборота наркотиков в штате и взять под контроль своей мафии все бизнесы штата!\n\
 					Только у нас Вы получаете качественный игровой мод, приятную атмосферу игры максимально приближенной к реальности.\n\
 					Вас ждёт увлекательные знакомства на сервере, любой игрок в дальнейшем может стать Вашим другом\n\
-					на которого Вы всегда сможете положится - всё это ждёт Вас на игровом сервере Aurora Role Play.\n\n\
+					на которого Вы всегда сможете положится - всё это ждёт Вас на игровом сервере Vegas Role Play.\n\n\
 					"GREEN"2.Защита аккаунта:"W"\n\
 					Уважаемый игрок, помните, что аккаунт - это Ваша собственность и никто другой за неё не отвечает!\n\
 					Администрация никогда не попросит пароль от Вашего аккаунта, ключ и т.д. никогда не сообщайте свои данные об аккаунте третьим лицам.\n\
@@ -26759,7 +26759,7 @@ public OnPlayerEnterDynamicArea(playerid, areaid) {
 					( /mm - Статистика игрока )";
 				new string[sizeof(f_str)];
 				format(string,sizeof(string),"%s",f_str);
-				D(playerid,DIALOG_NONE,DSM, ""P"Aurora RolePlay",string,"Хорошо","");
+				D(playerid,DIALOG_NONE,DSM, ""P"Vegas RolePlay",string,"Хорошо","");
 			}
 			case 12,13: {
 				if(PI[playerid][pLevel] != 1) return ErrorMessage(playerid,"Только для новичков (1 уровень)");
@@ -30091,10 +30091,10 @@ CB: OnPlayerRequestDetect(playerid,race_check) {
 			printf("ОШИБКА: Длина пароля игрока равна 0. Name: %s",player_name[playerid]);
 			SendClientMessage(playerid,-1,"В Ваш аккаунт возможно войти под любым паролем. (После авторизации, измените его)");
 		}
-		static const f_str[] = ""W"С возвращением на сервер "P"Aurora Role Play!"W"\n\n\
+		static const f_str[] = ""W"С возвращением на сервер "P"Vegas Role Play!"W"\n\n\
 			Аккаунт "P"%s"W" успешно найден.\n\
 			Для авторизации, пожалуйста, введите пароль от аккаунта.\n\n\
-			Восстановить пароль можно на сайте: "P"www.aurora-rp.com";
+			Восстановить пароль можно на сайте: "P"www.Vegas-rp.com";
 		new string[sizeof(f_str) + 1 + (-2 + MAX_PLAYER_NAME)];
 
 		format(string,sizeof(string),f_str,player_name[playerid]);
@@ -30120,7 +30120,7 @@ CB: OnPlayerRequestDetect(playerid,race_check) {
 
 	   	static const f_str[] = "\
 		   "NO"Общие положения:"G"\n\
-			"NO"- "G"Любой игрок,посетивший ресурс Aurora Role Play в своих же инетресах должен быть ознакомлен с данными правилами.\n\
+			"NO"- "G"Любой игрок,посетивший ресурс Vegas Role Play в своих же инетресах должен быть ознакомлен с данными правилами.\n\
 			"NO"- "G"Администратор вправе менять степень наказания на своё усмотрение.\n\
 			"NO"- "G"Правила действуют для всех игроков,независимо от игрового статуса на сервере.\n\
 			"NO"- "G"Правила могут быть изменены/отредактированы основателями сервера.\n\n\
@@ -30513,7 +30513,7 @@ stock minute_timer() {
 					format(query,sizeof(query), "UPDATE `"TABLE_ACCOUNTS"` SET lotteryfree = lotteryfree + '1' WHERE pID = '%d'",PI[i][pID]);
 					mysql_tquery(connects,query,"","");
 					PI[i][pPlayTime][1] = 0;
-					SendClientMessage(i,COLOR_YELLOW,"Доступно бесплатное вращение кейса на нашем сайте "P"AURORA-RP.COM");
+					SendClientMessage(i,COLOR_YELLOW,"Доступно бесплатное вращение кейса на нашем сайте "P"Vegas-RP.COM");
 				}
 			}
 			else {
@@ -30522,7 +30522,7 @@ stock minute_timer() {
 					format(query,sizeof(query), "UPDATE `"TABLE_ACCOUNTS"` SET lotteryfree = lotteryfree + '1' WHERE pID = '%d'",PI[i][pID]);
 					mysql_tquery(connects,query,"","");
 					PI[i][pPlayTime][1] = 0;
-					SendClientMessage(i,COLOR_YELLOW,"Доступно бесплатное вращение кейса на нашем сайте "P"AURORA-RP.COM");
+					SendClientMessage(i,COLOR_YELLOW,"Доступно бесплатное вращение кейса на нашем сайте "P"Vegas-RP.COM");
 				}
 			}
 		}
@@ -31137,7 +31137,7 @@ stock checkhour() {
 		SendClientMessageToAll(COLOR_YELLOW, "Просьба закончить все свои работы. Спасибо за понимание");
 	}
 	if(hour == 05 && minute == 05 && second == 00) {
-		SendClientMessageToAll(COLOR_REDD,"Aurora Role Play | Restart...");
+		SendClientMessageToAll(COLOR_REDD,"Vegas Role Play | Restart...");
 		save_other();
 		foreach(new i:Player) {
 			if(!TI[i][tLogin] || AntiCheatIsKickedWithDecync(i)) continue;
@@ -31160,12 +31160,12 @@ public OnGameModeExit() {
 }
 public OnGameModeInit() {
 	gCurDay = GetDayNumber();
-	SetGameModeText("Aurora RP Russian");
+	SetGameModeText("Vegas RP Russian");
 	new MySQLOpt: option_id = mysql_init_options();
 	mysql_set_option(option_id, AUTO_RECONNECT, true);
-	SendRconCommand("hostname Aurora RolePlay | Server: 1");
+	SendRconCommand("hostname Vegas RolePlay | Server: 1");
 	SELECT_SERVER = 1;
-	connects = mysql_connect("db3.myarena.ru", "u6024_aurora", "R6d2M6f8", "u6024_aurora", option_id);
+	connects = mysql_connect("db3.myarena.ru", "u6024_Vegas", "R6d2M6f8", "u6024_Vegas", option_id);
 
 	switch(SELECT_SERVER) {
 		case 1: printf("[Загрузка ...] БД MYSQL успешно соединено! (СЕРВЕР [ОСНОВНОЙ] | %i)",SELECT_SERVER);
@@ -32548,7 +32548,7 @@ stock CreateTexdraw() {
 	TextDrawSetOutline(LoadTextures[0], 0);
 	TextDrawFont(LoadTextures[0], 2);
 
-	LoadTextures[1] = TextDrawCreate(213.777755, 179.200042, "aurora roleplay");
+	LoadTextures[1] = TextDrawCreate(213.777755, 179.200042, "Vegas roleplay");
 	TextDrawLetterSize(LoadTextures[1], 0.472220, 2.466133);
 	TextDrawAlignment(LoadTextures[1], 1);
 	TextDrawColor(LoadTextures[1], -130386177);
@@ -33292,7 +33292,7 @@ stock CreateTexdraw() {
 	TextDrawSetPreviewModel(reg_td[2], 1011);
 	TextDrawSetPreviewRot(reg_td[2], 270.000000, 0.000000, 180.000000, 1.000000);
 
-	reg_td[3] = TextDrawCreate(494.633178, 289.970581, "A");
+	reg_td[3] = TextDrawCreate(494.633178, 289.970581, "V");
 	TextDrawLetterSize(reg_td[3], -1.104665, 6.718811);
 	TextDrawAlignment(reg_td[3], 1);
 	TextDrawColor(reg_td[3], -668439399);
@@ -33303,7 +33303,7 @@ stock CreateTexdraw() {
 	TextDrawSetProportional(reg_td[3], 0);
 	TextDrawSetShadow(reg_td[3], -1);
 
-	reg_td[4] = TextDrawCreate(495.966461, 334.355743, "URORA");
+	reg_td[4] = TextDrawCreate(495.966461, 334.355743, "EGAS");
 	TextDrawLetterSize(reg_td[4], 0.587997, 2.139259);
 	TextDrawAlignment(reg_td[4], 1);
 	TextDrawColor(reg_td[4], -668439399);
@@ -33491,7 +33491,7 @@ stock CreateTexdraw() {
 	TextDrawSetShadow(reg_td[18], 1);
 	//TextDrawSetSelectable(reg_td[18],true);
 
-	LOGO[0] = TextDrawCreate(547.111389, 0.497772, "A");
+	LOGO[0] = TextDrawCreate(547.111389, 0.497772, "V");
 	TextDrawLetterSize(LOGO[0], 0.562889, 3.501513);
 	TextDrawAlignment(LOGO[0], 1);
 	TextDrawColor(LOGO[0], -668439399);
@@ -33515,7 +33515,7 @@ stock CreateTexdraw() {
 	TextDrawFont(LOGO[1], 2);
 	TextDrawSetProportional(LOGO[1], 1);
 
-	LOGO[2] = TextDrawCreate(562.444885, 14.444438, "urora");
+	LOGO[2] = TextDrawCreate(562.444885, 14.444438, "egas");
 	TextDrawLetterSize(LOGO[2], 0.299777, 1.644801);
 	TextDrawAlignment(LOGO[2], 1);
 	TextDrawColor(LOGO[2], -668439399);
@@ -38247,7 +38247,7 @@ CMD:dress(playerid, params[]) {
 	SendUse(playerid,"Вы надели армейскую форму");
 	return true;
 }
-CMD:play(playerid, params[]) return D(playerid, D_RADIO, DSL, ""P"Онлайн радио", ""P"1."W" AURORA RADIO\n"P"2."W" Love Radio\n"P"3."W" Radio Record\n"P"4."W" Radio Energy\n"P"5."W" Retro FM\n"P"6."W" Радио Шансон\n"P"7."W" Выключить", "Принять", "Отмена");
+CMD:play(playerid, params[]) return D(playerid, D_RADIO, DSL, ""P"Онлайн радио", ""P"1."W" Vegas RADIO\n"P"2."W" Love Radio\n"P"3."W" Radio Record\n"P"4."W" Radio Energy\n"P"5."W" Retro FM\n"P"6."W" Радио Шансон\n"P"7."W" Выключить", "Принять", "Отмена");
 CMD:eject(playerid, params[]) {
 	if(!IsPlayerInAnyVehicle(playerid)) return true;
 	new State = GetPlayerState(playerid);
@@ -42917,11 +42917,11 @@ stock load_bonuses() {
 	    }
     }
     cache_delete(result);
-	if(!BonusInfo[act_select]) SendRconCommand("hostname Aurora RolePlay");
-	else if(BonusInfo[act_select] == 1) SendRconCommand("hostname Aurora RolePlay | Действует акция для новичков");
-	else SendRconCommand("hostname Aurora RolePlay | Действует акция");
+	if(!BonusInfo[act_select]) SendRconCommand("hostname Vegas RolePlay");
+	else if(BonusInfo[act_select] == 1) SendRconCommand("hostname Vegas RolePlay | Действует акция для новичков");
+	else SendRconCommand("hostname Vegas RolePlay | Действует акция");
 
-	if(SELECT_SERVER != 1) SendRconCommand("hostname Aurora RolePlay | Test Server");
+	if(SELECT_SERVER != 1) SendRconCommand("hostname Vegas RolePlay | Test Server");
     return true;
 }
 stock load_vip() {
@@ -43546,7 +43546,7 @@ stock ShowStats(playerid,targetid,idx) {
 	    format(str,128,"\n"P"Google Authenticator:\t\t\t"W"%s",(PI[targetid][pGoogleSec] == 1) ? ("Включен") : ("Отключен")), strcat(string,str);
 	}
 	strcat(string,"\n\n"ORANGE"Информацию о проекте Вы можете узнать по адресу:");
-	strcat(string,"\n\t\t\t"ORANGE"AURORA-RP.COM");
+	strcat(string,"\n\t\t\t"ORANGE"Vegas-RP.COM");
 	return D(playerid,DIALOG_NONE,DSM, ""P"Статистика",string, "Закрыть", "");
 }
 
@@ -44860,7 +44860,7 @@ CB: load_account(playerid) {
 		UpdatePlayerData(playerid,"pCash",0);
 	}
 
-	SendClientMessage(playerid, -1, "Добро пожаловать на "P"Aurora RolePlay");
+	SendClientMessage(playerid, -1, "Добро пожаловать на "P"Vegas RolePlay");
 	if(PI[playerid][pHelper]) SendClientMessage(playerid, COLOR_YELLOW, "[Game Support]"W" для выхода на дежурство, введите: "P"/gsduty");
 
 	if(PI[playerid][pLevel] <= BonusInfo[act_level] && BonusInfo[act_select] == 1) {
@@ -46774,7 +46774,7 @@ CB: alogin(playerid,const giveplayerid[]) {
 	new query[160];
 	format(query, sizeof(query), "UPDATE `admin` SET `password` = MD5('%s') WHERE `name` = '%s'", inputtext, player_name[playerid]);
 	mysql_pquery(connects,query);
-	SendClientMessage(playerid, CGOLD, "Добро пожаловать в команду администрации Aurora RolePlay!");
+	SendClientMessage(playerid, CGOLD, "Добро пожаловать в команду администрации Vegas RolePlay!");
 
 	cache_get_value_int(0,"rank",PI[playerid][pAdmin]);
 	cache_get_value_int(0,"kick",gAdmin[playerid][0]);
@@ -49695,7 +49695,7 @@ stock ShowGetGun(playerid) {
 CB: AttachTrailerToVehicleEx(trailerid,vehicleid) AttachTrailerToVehicle(trailerid,vehicleid);
 CB: UnCallisionForPlayer(playerid) DisableRemoteVehicleCollisions(playerid, false);
 CB: OnServerRestarting() {
-	SendClientMessageToAll(COLOR_REDD,"Aurora Role Play | Restart...");
+	SendClientMessageToAll(COLOR_REDD,"Vegas Role Play | Restart...");
 	foreach(new i:Player) {
 		if(!TI[i][tLogin] || AntiCheatIsKickedWithDecync(i)) continue;
 		SaveAccount(i), save_car(i,0), save_car(i,1);
@@ -50094,9 +50094,9 @@ CMD:gg(playerid, params[]) {
 	if(sscanf(params, "d",giveplayerid)) return SendEsp(playerid,"/gg [id]");
 	if(!IsPlayerConnected(giveplayerid)) return ErrorMessage(playerid,not_id);
 	new string[128];
-	format(string,sizeof(string),"Ответ от %s[%i]: Приятной Вам игры на сервере Aurora Role Play",player_name[playerid],playerid);
+	format(string,sizeof(string),"Ответ от %s[%i]: Приятной Вам игры на сервере Vegas Role Play",player_name[playerid],playerid);
 	SendClientMessage(giveplayerid, 0xffa141FF, string);
-	format(string, sizeof(string), ""W"%s[%i] {FFa500}К "W"%s[%i]: {FFa500}Приятной Вам игры на сервере Aurora Role Play",player_name[playerid],playerid,player_name[giveplayerid],giveplayerid);
+	format(string, sizeof(string), ""W"%s[%i] {FFa500}К "W"%s[%i]: {FFa500}Приятной Вам игры на сервере Vegas Role Play",player_name[playerid],playerid,player_name[giveplayerid],giveplayerid);
 	SendAdminMessage(0xFfa500AA, string);
 	PlayerPlaySound(giveplayerid, 4203, 0.0, 0.0, 0.0);
 	return true;
@@ -53848,7 +53848,7 @@ CB: unitpay_callback(playerid, type) {
 				"W"Состояние счёта:\t\t"GREEN"%i рублей\n\
 				{3399FF}20 последних пополнений"W"\n\n\
 				%s\n\
-				"ORANGE"Пополнить счёт можно на "P"Aurora-Rp.Com",
+				"ORANGE"Пополнить счёт можно на "P"Vegas-Rp.Com",
 				PI[playerid][pRouble], str);
 	        D(playerid, DIALOG_NONE, DSM, ""P"Информация о пополнениях", string, "Закрыть", "");
 		}
@@ -60217,7 +60217,7 @@ stock auto_news(slot,playerid) {
 	gAdvert[slot][adTime] = gAdvertTime;
 	gAdvertTime += 30;
 
-	SetString(gAdvert[slot][adCheker],"Aurora Bot");
+	SetString(gAdvert[slot][adCheker],"Vegas Bot");
 	
 	gAdvert[slot][adCheking] = false;
 	gAdvert[slot][adCheked] = true;
@@ -60399,13 +60399,13 @@ start_invets() {
 				invent_car[2] = A_AddStaticVehicleEx(573, -1260.6613,-2121.5640,26.2166,102.8287, 0, 0, 100000,VEHICLE_TYPE_INVENT);
 			}
 		}
-		SendCop(0x54548CFF,"Сухогруз Aurora прибыл в San Andreas. Отплытие через 30 минут");
+		SendCop(0x54548CFF,"Сухогруз Vegas прибыл в San Andreas. Отплытие через 30 минут");
 		SendCop(0x54548CFF,"Подсказка: В каждом ящике по 5000 патронов. За убийство игрока из нелегальной организации легальной выплачивается 3.000 $, наоборот 1.500 ");
 
-		SendArmy(0x54548CFF,"Сухогруз Aurora прибыл в San Andreas. Отплытие через 30 минут");
+		SendArmy(0x54548CFF,"Сухогруз Vegas прибыл в San Andreas. Отплытие через 30 минут");
 		SendArmy(0x54548CFF,"Подсказка: В каждом ящике по 5000 патронов. За убийство игрока из нелегальной организации легальной выплачивается 3.000 $, наоборот 1.500 ");
 
-		SendBand(0x54548CFF,"Сухогруз Aurora прибыл в San Andreas. Отплытие через 30 минут");
+		SendBand(0x54548CFF,"Сухогруз Vegas прибыл в San Andreas. Отплытие через 30 минут");
 		SendBand(0x54548CFF,"Подсказка: В каждом ящике по 5000 патронов. За убийство игрока из нелегальной организации легальной выплачивается 3.000 $, наоборот 1.500 ");
 
 		invent_zone_id = rand;
@@ -61964,7 +61964,7 @@ stock show_vip(playerid,vip) {
 	"W"Получение лицензии на оружие без мед. печати\t"P"%d\n\
 	"W"При подаче объявления в /ad Ваше объявление будет выделятся тэгом [VIP]\t"P"%d\n\
 	"W"Вход в бизнес дешевле в\t"P"%d\n\
-	"W"Больше не надо ездить к Aurora Bot /vad (/vad)\t"P"%d\n\
+	"W"Больше не надо ездить к Vegas Bot /vad (/vad)\t"P"%d\n\
 	"W"SMS другим игрокам бесплатные, больше не нужно пополнять телефон\t"P"%d\n\
 	"W"Лечение болезней в  раза дешевле\t"P"%d\n\
 	"W"Ограничение /pay поднимается до\t"P"%d\n\
